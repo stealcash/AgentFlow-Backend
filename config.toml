@@ -1,0 +1,47 @@
+[app]
+env = "development"
+jwt_secret_key = "supersecretkey"
+port = 8080
+api_url = "http://localhost:8080"
+
+[maindatabase]
+user = "neondb_owner"
+password = "npg_QScVIk8YZoK3"
+name = "neondb"
+host = "ep-soft-band-a17egj3a-pooler.ap-southeast-1.aws.neon.tech"
+port = 5432
+sslmode = "require"
+
+
+[frontend]
+path = "http://localhost:3000"
+
+
+
+[server]
+# API base comes from .env
+
+[regional]
+Language = "en"
+Timezone = "Aisa/Kolkata"
+
+# Trusted proxies (array)
+trusted_proxies = ["127.0.0.1"]
+
+
+
+
+[[chatgpt_models]]
+identifier = "default"
+model_name = "gpt-4o"
+chatgpt_api_key = "sk-xxxx1"
+
+[[chatgpt_models]]
+identifier = "fast"
+model_name = "gpt-3.5-turbo"
+chatgpt_api_key = "sk-xxxx2"
+
+[[chatgpt_models]]
+identifier = "custom"
+model_name = "gpt-4o-mini"
+chatgpt_api_key = "sk-xxxx3"

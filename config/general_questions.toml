@@ -1,0 +1,11 @@
+[[general_questions]]
+answer = "I'm doing great, thank you! How can I help you today?"
+questions = ["how are you", "how are you doing", "how are you today"]
+
+[[general_questions]]
+answer = "I'm your friendly AI chatbot, here to assist you!"
+questions = ["who are you", "what is your name", "tell me about yourself"]
+
+[[general_questions]]
+answer = "Hi there! How can I assist you?"
+questions = ["hi", "hello", "hey"]

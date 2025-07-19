@@ -1,0 +1,54 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Output of the go build command
+/build/
+bin/
+*.out
+
+# Vendor directory (if not using Go modules)
+vendor/
+
+# Dependency directories (legacy)
+Godeps/
+
+# Go workspace files
+go.work
+go.work.sum
+
+# IDE/editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test coverage files
+*.coverprofile
+*.cover
+*.cov
+coverage.*
+
+# Logs
+*.log
+
+# Environment files (keep only the .env.example)
+.env
+.env.*
+!.env.example
+
+# Local settings or local config overrides
+local.*
+config.local.*
+
+# Private real config (keep only the -sample!)
+config/config.toml
+config/config-local.toml

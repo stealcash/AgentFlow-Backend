@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=true
+      # ✅ Set the superuser password for Elasticsearch
+      - ELASTIC_PASSWORD=test@123
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.13.4
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      # ✅ Tell Kibana where to find Elasticsearch
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+
+      # ✅ This must be set to a valid service token that you create AFTER Elasticsearch is up
+      #    You will generate this with:
+      #    docker exec -it elasticsearch bash
+      #    bin/elasticsearch-service-tokens create elastic/kibana kibana-service-token
+      - ELASTICSEARCH_SERVICEACCOUNTTOKEN=AAEAAWVsYXN0aWMva2liYW5hL2tpYmFuYS1zZXJ2aWNlLXRva2VuOlYweHJsamFFUmtLWXlWVHBFbF9nNlE
+
+      # ✅ This key must be at least 32 characters long.
+      #    It secures saved objects like dashboards and alerts.
+      - xpack.encryptedSavedObjects.encryptionKey=something_at_least_32_characters_long_123456
+
+volumes:
+  es_data:
+    driver: local
